@@ -1,7 +1,5 @@
 'use strict';
 
-exports.name = 'LoginCtrl';
-exports.type = 'controller';
 exports.factory = function($scope, Auth, $state) {
     $scope.testvar = 'Aap';
     $scope.auth = Auth;
@@ -48,7 +46,7 @@ exports.factory = function($scope, Auth, $state) {
     $scope.login = function() {
         //console.log('login not implemented yet');
         //location.href='home';
-        $state.transitionTo('home');
+        $state.transitionTo('home.admin');
     };
     $scope.forgotPassword = function() {
         console.log('forgot password not implemented yet');

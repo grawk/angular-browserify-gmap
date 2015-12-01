@@ -9,7 +9,6 @@ var app = angular.module('jhApp', [uiRoute]);
 var loginCtrl = require('./controllers/LoginCtrl');
 var navCtrl = require('./controllers/NavCtrl');
 var adminCtrl = require('./controllers/AdminCtrl');
-var homeCtrl = require('./controllers/HomeCtrl');
 
 //injector
 function inject(mod) {
@@ -38,18 +37,18 @@ app.config(['$locationProvider', '$stateProvider', function($locationProvider, $
             controller: loginCtrl.factory
         })
         .state('home', {
-            url: '/home',
-            controller: homeCtrl.factory,
-            templateUrl: 'views/ng/home.html'
+            templateUrl: 'views/ng/home.html',
+            abstract: true
         })
         .state('home.admin', {
             parent: 'home',
+            url: '/admin',
             views: {
                 'nav': {
                     controller: navCtrl.factory,
                     templateUrl: 'views/ng/nav.html'
                 },
-                'admin': {
+                'main': {
                     controller: adminCtrl.factory,
                     templateUrl: 'views/ng/admin.html'
                 }
