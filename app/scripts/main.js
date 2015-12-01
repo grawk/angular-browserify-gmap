@@ -13,14 +13,8 @@ var homeCtrl = require('./controllers/HomeCtrl');
 
 //injector
 function inject(mod) {
-    if (mod.constructor === Array) {
-        //app.controller({'HomeCtrl': homeCtrl.factory, 'AdminCtrl': adminCtrl.factory});
-        //return homeCtrl.factory;
-    } else {
         app[mod.type](mod.name, mod.factory);
         return mod.factory;
-    }
-
 }
 
 //auth service
@@ -42,8 +36,7 @@ app.config(['$locationProvider', '$stateProvider', function($locationProvider, $
             url: '/',
             templateUrl: 'views/ng/login.html',
             controller: loginCtrl.factory
-        });
-    $stateProvider
+        })
         .state('home', {
             url: '/home',
             controller: homeCtrl.factory,
