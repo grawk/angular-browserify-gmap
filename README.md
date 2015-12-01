@@ -3,6 +3,7 @@
 Node.js web application for Jiseki Health, Inc.
 
 Technologies used:
+
 * [krakenjs expressjs wrapper](http://krakenjs.com)
 * [angularjs](http://angularjs.org)
 * [angular-ui-router](https://github.com/angular-ui/ui-router/wiki)
