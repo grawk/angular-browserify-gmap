@@ -46,10 +46,10 @@ exports.factory = function($scope, Auth, $state) {
     $scope.login = function() {
         //console.log('login not implemented yet');
         //location.href='home';
-        $state.transitionTo('home.admin');
+        $state.transitionTo('home.landing');
     };
     $scope.forgotPassword = function() {
-        console.log('forgot password not implemented yet');
+        $state.transitionTo('forgot');
     };
 
 };

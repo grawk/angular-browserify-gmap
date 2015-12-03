@@ -7,13 +7,15 @@ var app = angular.module('jhApp', [uiRoute]);
 
 //controller modules
 var loginCtrl = require('./controllers/LoginCtrl');
+var forgotCtrl = require('./controllers/ForgotCtrl');
 var navCtrl = require('./controllers/NavCtrl');
 var adminCtrl = require('./controllers/AdminCtrl');
+var patientsCtrl = require('./controllers/PatientsCtrl');
 
 //injector
 function inject(mod) {
-        app[mod.type](mod.name, mod.factory);
-        return mod.factory;
+    app[mod.type](mod.name, mod.factory);
+    return mod.factory;
 }
 
 //auth service
@@ -25,9 +27,7 @@ var exampleDtv = require('./directives/ExampleDirective');
 inject(exampleDtv);
 
 
-
-
-app.config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
+app.config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
     $locationProvider.html5Mode(true);
 
     $stateProvider
@@ -36,24 +36,49 @@ app.config(['$locationProvider', '$stateProvider', function($locationProvider, $
             templateUrl: 'views/ng/login.html',
             controller: loginCtrl.factory
         })
+        .state('forgot', {
+            templateUrl: 'views/ng/forgot.html',
+            controller: forgotCtrl.factory
+        })
         .state('home', {
             templateUrl: 'views/ng/home.html',
             abstract: true
         })
-        .state('home.admin', {
+        .state('home.landing', {
             parent: 'home',
-            url: '/admin',
+            url: '/home',
             views: {
-                'nav': {
+                nav: {
+                    controller: navCtrl.factory,
+                    templateUrl: 'views/ng/nav.html'
+                }
+            }
+        }).state('home.admin', {
+            parent: 'home',
+            url: '/home/admin',
+            views: {
+                nav: {
                     controller: navCtrl.factory,
                     templateUrl: 'views/ng/nav.html'
                 },
-                'main': {
+                main: {
                     controller: adminCtrl.factory,
-                    templateUrl: 'views/ng/admin.html'
+                    templateUrl: 'views/ng/admins.html'
                 }
             }
-
+        }).state('home.patients', {
+            parent: 'home',
+            url: '/home/patients',
+            views: {
+                nav: {
+                    controller: navCtrl.factory,
+                    templateUrl: 'views/ng/nav.html'
+                },
+                main: {
+                    controller: patientsCtrl.factory,
+                    templateUrl: 'views/ng/patients.html'
+                }
+            }
         });
 
 }]);
