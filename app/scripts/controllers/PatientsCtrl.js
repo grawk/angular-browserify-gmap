@@ -1,11 +1,10 @@
 'use strict';
 
 
-exports.factory = function($scope, $http, Auth) {
+exports.factory = function($scope, $http, Auth, PatientSvc) {
     $scope.auth = Auth;
 
-    //implement below as service?
-    $http.get('/api/patients').success(function (data) {
+    PatientSvc.getPatients().success(function (data) {
         $scope.patients = data.patients;
     });
 

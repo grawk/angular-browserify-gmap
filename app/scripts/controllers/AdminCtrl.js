@@ -1,11 +1,10 @@
 'use strict';
 
 
-exports.factory = function($scope, $http, Auth) {
+exports.factory = function($scope, $http, Auth, AdminSvc) {
     $scope.auth = Auth;
 
-    //implement below as service?
-    $http.get('/api/admins').success(function (data) {
+    AdminSvc.getAdmins().success(function (data) {
         $scope.sysAdmins = data.admins;
     });
 

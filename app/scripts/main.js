@@ -22,6 +22,14 @@ function inject(mod) {
 var authSvc = require('./services/Auth');
 inject(authSvc);
 
+//patient service
+var patientSvc = require('./services/PatientSvc');
+inject(patientSvc);
+
+//admin service
+var adminSvc = require('./services/AdminSvc');
+inject(adminSvc);
+
 //example directive
 var exampleDtv = require('./directives/ExampleDirective');
 inject(exampleDtv);
