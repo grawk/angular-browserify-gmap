@@ -4,6 +4,7 @@ Node.js web application for Jiseki Health, Inc.
 
 ## Getting started
 
+* install `gulp` globally: `npm install -g gulp`
 * clone this repository
 * `npm install`
 * `gulp`
