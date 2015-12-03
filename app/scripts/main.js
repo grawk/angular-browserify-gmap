@@ -10,7 +10,7 @@ var loginCtrl = require('./controllers/LoginCtrl');
 var forgotCtrl = require('./controllers/ForgotCtrl');
 var navCtrl = require('./controllers/NavCtrl');
 var adminCtrl = require('./controllers/AdminCtrl');
-var patientsCtrl = require('./controllers/PatientsCtrl');
+var patientCtrl = require('./controllers/PatientCtrl');
 
 //injector
 function inject(mod) {
@@ -36,6 +36,10 @@ inject(exampleDtv);
 
 
 app.config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
+    var navView = {
+        controller: navCtrl.factory,
+        templateUrl: 'views/ng/nav.html'
+    };
     $locationProvider.html5Mode(true);
 
     $stateProvider
@@ -56,19 +60,13 @@ app.config(['$locationProvider', '$stateProvider', function ($locationProvider, 
             parent: 'home',
             url: '/home',
             views: {
-                nav: {
-                    controller: navCtrl.factory,
-                    templateUrl: 'views/ng/nav.html'
-                }
+                nav: navView
             }
         }).state('home.admins', {
             parent: 'home',
             url: '/home/admins',
             views: {
-                nav: {
-                    controller: navCtrl.factory,
-                    templateUrl: 'views/ng/nav.html'
-                },
+                nav: navView,
                 main: {
                     controller: adminCtrl.factory,
                     templateUrl: 'views/ng/admins.html'
@@ -78,12 +76,9 @@ app.config(['$locationProvider', '$stateProvider', function ($locationProvider, 
             parent: 'home',
             url: '/home/patients',
             views: {
-                nav: {
-                    controller: navCtrl.factory,
-                    templateUrl: 'views/ng/nav.html'
-                },
+                nav: navView,
                 main: {
-                    controller: patientsCtrl.factory,
+                    controller: patientCtrl.factory,
                     templateUrl: 'views/ng/patients.html'
                 }
             }
