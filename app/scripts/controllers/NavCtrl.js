@@ -1,6 +1,6 @@
 'use strict';
 
-exports.factory = function($scope, $state, Auth) {
+module.exports = function($scope, $state, Auth) {
     //nothing yet
     $scope.goto = function (where) {
         console.log('where is', where);

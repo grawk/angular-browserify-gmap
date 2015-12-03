@@ -1,6 +1,6 @@
 'use strict';
 
-exports.factory = function($scope, Auth, $state) {
+module.exports = function($scope, Auth, $state) {
     $scope.testvar = 'Aap';
     $scope.auth = Auth;
 

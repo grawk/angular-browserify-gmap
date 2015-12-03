@@ -5,12 +5,30 @@ var angular = require('angular');
 var uiRoute = require('angular-ui-router');
 var app = angular.module('jhApp', [uiRoute]);
 
-//controller modules
-var loginCtrl = require('./controllers/LoginCtrl');
-var forgotCtrl = require('./controllers/ForgotCtrl');
-var navCtrl = require('./controllers/NavCtrl');
-var adminCtrl = require('./controllers/AdminCtrl');
-var patientCtrl = require('./controllers/PatientCtrl');
+//controllers
+var loginCtrl = require('./controllers/LoginCtrl'),
+    forgotCtrl = require('./controllers/ForgotCtrl'),
+    navCtrl = require('./controllers/NavCtrl'),
+    adminCtrl = require('./controllers/AdminCtrl'),
+    patientCtrl = require('./controllers/PatientCtrl');
+
+//combined views
+var forgotView = {
+        controller: forgotCtrl,
+        templateUrl: 'views/ng/forgot.html'
+    },
+    navView = {
+        controller: navCtrl,
+        templateUrl: 'views/ng/nav.html'
+    },
+    adminView = {
+        controller: adminCtrl,
+        templateUrl: 'views/ng/admin.html'
+    },
+    patientView = {
+        controller: patientCtrl,
+        templateUrl: 'views/ng/patients.html'
+    };
 
 //injector
 function inject(mod) {
@@ -36,22 +54,16 @@ inject(exampleDtv);
 
 
 app.config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
-    var navView = {
-        controller: navCtrl.factory,
-        templateUrl: 'views/ng/nav.html'
-    };
     $locationProvider.html5Mode(true);
 
+    //application states
     $stateProvider
         .state('login', {
             url: '/',
             templateUrl: 'views/ng/login.html',
-            controller: loginCtrl.factory
+            controller: loginCtrl
         })
-        .state('forgot', {
-            templateUrl: 'views/ng/forgot.html',
-            controller: forgotCtrl.factory
-        })
+        .state('forgot', forgotView)
         .state('home', {
             templateUrl: 'views/ng/home.html',
             abstract: true
@@ -67,20 +79,14 @@ app.config(['$locationProvider', '$stateProvider', function ($locationProvider, 
             url: '/home/admins',
             views: {
                 nav: navView,
-                main: {
-                    controller: adminCtrl.factory,
-                    templateUrl: 'views/ng/admins.html'
-                }
+                main: adminView
             }
         }).state('home.patients', {
             parent: 'home',
             url: '/home/patients',
             views: {
                 nav: navView,
-                main: {
-                    controller: patientCtrl.factory,
-                    templateUrl: 'views/ng/patients.html'
-                }
+                main: patientView
             }
         });
 
