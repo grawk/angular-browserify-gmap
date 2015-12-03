@@ -9,7 +9,9 @@ Node.js web application for Jiseki Health, Inc.
 * `gulp`
 * `npm start`
 * Visit http://localhost:8000/ for the login page
-* Click "Login" to activate the logged in home page
+* Click "Login" to activate the logged in home/navigation page
+* Click "Forgot password" to activate the forgot password page
+* "Admins" and "Patients" inner pages are available via the navigation links
 
 ## Technologies used
 

@@ -5,7 +5,7 @@ exports.factory = function($scope, $state, Auth) {
     $scope.goto = function (where) {
         console.log('where is', where);
         if (where === 'sysadmin') {
-            $state.transitionTo('home.admin');
+            $state.transitionTo('home.admins');
         } else if (where === 'patients') {
             $state.transitionTo('home.patients');
         } else if (where === 'logout') {

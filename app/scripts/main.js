@@ -53,9 +53,9 @@ app.config(['$locationProvider', '$stateProvider', function ($locationProvider, 
                     templateUrl: 'views/ng/nav.html'
                 }
             }
-        }).state('home.admin', {
+        }).state('home.admins', {
             parent: 'home',
-            url: '/home/admin',
+            url: '/home/admins',
             views: {
                 nav: {
                     controller: navCtrl.factory,
