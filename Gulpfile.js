@@ -24,7 +24,7 @@ gulp.task('browserify', function () {
     gulp.src(['app/scripts/main.js'])
         .pipe(browserify({
             insertGlobals: true,
-            debug: true
+            debug: false
         }))
         // Bundle to a single file
         .pipe(concat('bundle.js'))

@@ -1,4 +1,8 @@
 extends layout
 block body
-    div(ui-view)
+    div(ng-controller='mapController') {{name}}
+        ui-gmap-google-map(center="map.center" zoom="map.zoom")
+    script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js')
     script(src='js/bundle.js')
+    script(src='http://cdn.rawgit.com/nmccready/angular-simple-logger/0.0.1/dist/index.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.2.1/angular-google-maps.min.js')
